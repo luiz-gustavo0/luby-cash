@@ -1,10 +1,13 @@
-const dotenv = require('dotenv');
 const express = require('express');
 const cors = require('cors');
+const Consumer = require('./kafka/consumer');
 
-dotenv.config();
+require('./database');
 
 const app = express();
+
+const consumer = new Consumer('newUsersGroup');
+consumer.consume('create-user');
 
 app.use(cors());
 

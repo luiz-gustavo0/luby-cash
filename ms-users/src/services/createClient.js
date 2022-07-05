@@ -26,3 +26,5 @@ class CreateClient {
     }
   }
 }
+
+module.exports = CreateClient;
