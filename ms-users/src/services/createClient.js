@@ -3,7 +3,7 @@ const Client = require('../database/models/Client.js');
 
 class CreateClient {
   async create(data) {
-    if (data.average_salary > 500) {
+    if (data.average_salary >= 500) {
       data.current_balance = 200;
       data.status = true;
     } else {
