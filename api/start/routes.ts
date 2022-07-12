@@ -21,5 +21,7 @@
 import Route from '@ioc:Adonis/Core/Route'
 
 Route.post('/login', 'AuthController.login')
+Route.post('/reset-password', 'ResetPasswordsController.store')
+Route.put('/change-password/:token', 'ResetPasswordsController.update')
 
 Route.post('/client', 'ClientsController.store')

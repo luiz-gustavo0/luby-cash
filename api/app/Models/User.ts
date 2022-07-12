@@ -19,7 +19,7 @@ export default class User extends BaseModel {
   public token: string | undefined
 
   @column()
-  public token_created_at: string | undefined
+  public token_created_at: Date | undefined
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

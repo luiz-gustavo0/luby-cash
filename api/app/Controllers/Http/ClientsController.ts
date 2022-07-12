@@ -7,7 +7,7 @@ import { Partitioners } from 'kafkajs'
 export default class ClientsController {
   public async store({ request, response }: HttpContextContract) {
     try {
-      await request.validate(CreateClientValidator)
+      // await request.validate(CreateClientValidator)
 
       const body = request.only([
         'full_name',
@@ -60,7 +60,7 @@ export default class ClientsController {
 
       return response.status(201).json(client)
     } catch (error) {
-      console.error('client', error)
+      console.error('client', error.message)
 
       return response.status(error.status).json({ message: error.message })
     }
