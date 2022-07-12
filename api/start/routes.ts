@@ -24,4 +24,9 @@ Route.post('/login', 'AuthController.login')
 Route.post('/reset-password', 'ResetPasswordsController.store')
 Route.put('/change-password/:token', 'ResetPasswordsController.update')
 
+Route.group(() => {
+  Route.get('/admin/all', 'UsersController.index')
+  Route.post('/admin/create', 'UsersController.store')
+}).middleware('auth')
+
 Route.post('/client', 'ClientsController.store')

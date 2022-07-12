@@ -5,8 +5,10 @@ import User from 'App/Models/User'
 import AdminValidator from 'App/Validators/AdminValidator'
 
 export default class UsersController {
-  public async index({ response }: HttpContextContract) {
+  public async index({ response, bouncer }: HttpContextContract) {
     try {
+      await bouncer.authorize('adminOperations')
+
       const admins = await Admin.all()
 
       return response.status(200).json(admins)
@@ -15,9 +17,11 @@ export default class UsersController {
     }
   }
 
-  public async store({ request, response }: HttpContextContract) {
+  public async store({ request, response, bouncer }: HttpContextContract) {
     try {
       await request.validate(AdminValidator)
+
+      await bouncer.authorize('adminOperations')
 
       const { full_name, email, password, phone, cpf_number, zipcode, city, state, address } =
         request.all()

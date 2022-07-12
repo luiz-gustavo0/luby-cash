@@ -53,11 +53,13 @@
   },
   "dependencies": {
     "@adonisjs/auth": "^8.2.1",
+    "@adonisjs/bouncer": "^2.3.0",
     "@adonisjs/core": "^5.8.4",
     "@adonisjs/lucid": "^18.1.0",
     "@adonisjs/mail": "^8.1.2",
     "@adonisjs/repl": "^3.1.11",
     "@adonisjs/view": "^6.1.6",
+    "adonis-lucid-filter": "^4.1.0",
     "kafkajs": "^2.1.0",
     "luxon": "^2.4.0",
     "moment": "^2.29.4",
