@@ -19,7 +19,7 @@ export default class UsersController {
 
   public async store({ request, response, bouncer }: HttpContextContract) {
     try {
-      await request.validate(AdminValidator)
+      // await request.validate(AdminValidator)
 
       await bouncer.authorize('adminOperations')
 
@@ -35,6 +35,7 @@ export default class UsersController {
       const data = {
         user_id: user.id,
         full_name,
+        email,
         phone,
         cpf_number,
         zipcode,
@@ -47,6 +48,7 @@ export default class UsersController {
 
       return response.status(201).json(admin)
     } catch (error) {
+      console.log('Admin Store', error)
       return response.status(error.status).json({ message: error.message })
     }
   }
