@@ -45,8 +45,8 @@ export default class PixesController {
       if (clientSender.current_balance >= transfer_amount) {
         await Database.query()
           .from('clients')
+          .where({ user_id: client.id })
           .update({ current_balance: (clientSender.current_balance -= transfer_amount) })
-          .where({ user_id: clientSender.id })
 
         await Extract.create({
           client_id: clientSender.id,
@@ -57,8 +57,8 @@ export default class PixesController {
 
         await Database.query()
           .from('clients')
-          .update({ current_balance: (clientRecipient.current_balance += transfer_amount) })
           .where({ cpf_number: cpf_destination })
+          .update({ current_balance: (clientRecipient.current_balance += transfer_amount) })
 
         await Extract.create({
           client_id: clientRecipient.id,
