@@ -1,7 +1,12 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import { compose } from '@ioc:Adonis/Core/Helpers'
+import { Filterable } from '@ioc:Adonis/Addons/LucidFilter'
+import ExtractFilter from './Filters/ExtractFilter'
 
-export default class Extract extends BaseModel {
+export default class Extract extends compose(BaseModel, Filterable) {
+  public static $filter = () => ExtractFilter
+
   @column({ isPrimary: true })
   public id: number
 
