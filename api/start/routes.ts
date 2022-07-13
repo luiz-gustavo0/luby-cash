@@ -28,6 +28,7 @@ Route.group(() => {
   Route.get('/admin/all', 'UsersController.index')
   Route.post('/admin/create', 'UsersController.store')
 
+  Route.get('/admin/clients', 'AdminActionsController.getClients')
   Route.get('/admin/client/extracts/:id', 'AdminActionsController.getExtracts')
 }).middleware('auth')
 
