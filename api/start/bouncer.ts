@@ -36,6 +36,12 @@ export const { actions } = Bouncer.define('adminOperations', (admin: User) => {
   }
 
   return Bouncer.deny('Você não tem permissão de administrador', 401)
+}).define('makePix', (client: User) => {
+  if (client.role === 'client') {
+    return true
+  }
+
+  return Bouncer.deny('Você não tem permissão para realizar esta operação', 401)
 })
 
 /*

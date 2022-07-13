@@ -30,3 +30,4 @@ Route.group(() => {
 }).middleware('auth')
 
 Route.post('/client', 'ClientsController.store')
+Route.post('/client/pix', 'PixesController.store').middleware('auth')
